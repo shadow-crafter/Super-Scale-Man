@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var segments: Array[PackedScene]
-@export var spawn_cap: int = 3
+@export var spawn_cap: int = 4
 
 var spawned: int = 0
 
