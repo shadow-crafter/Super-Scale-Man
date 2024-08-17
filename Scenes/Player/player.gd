@@ -40,3 +40,7 @@ func screenwrap() -> void:
 		position.y = 0
 	elif position.y < (0 - 8 * tmp_scale):
 		position.y = 256
+
+
+func _on_hurtbox_area_entered(_area: Area2D) -> void:
+	get_tree().call_deferred("reload_current_scene")
