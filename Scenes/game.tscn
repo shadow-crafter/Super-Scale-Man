@@ -1,16 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://cdl6gdcyomj70"]
+[gd_scene load_steps=3 format=3 uid="uid://cdl6gdcyomj70"]
 
 [ext_resource type="Texture2D" uid="uid://chb3gndcy71f8" path="res://Assets/grid.png" id="1_mbgbp"]
+[ext_resource type="PackedScene" uid="uid://5n6urx74v1s6" path="res://Scenes/Player/player.tscn" id="2_svo5w"]
 
 [node name="Game" type="Node2D"]
 
 [node name="ParallaxBackground" type="Node2D" parent="."]
 
 [node name="ParallaxLayer" type="Parallax2D" parent="ParallaxBackground"]
-repeat_size = Vector2(512, 256)
+repeat_size = Vector2(512, 0)
 autoscroll = Vector2(32, 0)
 follow_viewport = false
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 texture = ExtResource("1_mbgbp")
 centered = false
+
+[node name="Player" parent="." instance=ExtResource("2_svo5w")]
+position = Vector2(128, 128)
