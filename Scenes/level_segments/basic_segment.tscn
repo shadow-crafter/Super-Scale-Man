@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxu5mt8s2poq4"]
+
+[ext_resource type="PackedScene" uid="uid://tw2cfj62ivwi" path="res://Resources/level_segment/level_segment.tscn" id="1_e0gdn"]
+[ext_resource type="Script" path="res://Scenes/level_segments/basic_segment.gd" id="2_qbglb"]
+[ext_resource type="Texture2D" uid="uid://bqwu4vf5w33hr" path="res://Assets/test_segment.png" id="2_td1qs"]
+
+[node name="BasicSegment" instance=ExtResource("1_e0gdn")]
+script = ExtResource("2_qbglb")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_td1qs")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." index="1"]
+position = Vector2(0, 256)
+rotation = 3.14159
+texture = ExtResource("2_td1qs")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" index="0"]
+polygon = PackedVector2Array(-16, 96, 16, 96, 16, -128, -16, -128)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D" index="1"]
+polygon = PackedVector2Array(-16, 160, 16, 160, 16, 384, -16, 384)
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="3"]
+rect = Rect2(-32, 0, 64, 256)
