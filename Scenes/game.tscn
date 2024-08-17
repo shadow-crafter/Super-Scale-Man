@@ -10,7 +10,7 @@
 
 [node name="ParallaxLayer" type="Parallax2D" parent="ParallaxBackground"]
 repeat_size = Vector2(512, 0)
-autoscroll = Vector2(32, 0)
+autoscroll = Vector2(-32, 0)
 follow_viewport = false
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]

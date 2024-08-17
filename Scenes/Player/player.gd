@@ -32,7 +32,7 @@ func scale_player() -> void:
 		tmp_scale += 0.5
 	elif Input.is_action_just_pressed("Scale_down"):
 		tmp_scale -= 0.5
-	tmp_scale = clampf(tmp_scale, 0.15, 16)
+	tmp_scale = clampf(tmp_scale, 0.5, 16)
 	scale = Vector2(tmp_scale, tmp_scale)
 
 func screenwrap() -> void:
