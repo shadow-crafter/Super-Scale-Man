@@ -12,7 +12,7 @@ var tmp_scale: float = 2.0
 @onready var sprite: Sprite2D = $Sprite2D
 
 func _physics_process(delta: float) -> void:
-	scale_player(delta)
+	scale_player()
 	move_player(delta)
 	screenwrap()
 
@@ -27,11 +27,11 @@ func move_player(delta: float) -> void:
 	
 	move_and_slide()
 
-func scale_player(delta: float) -> void:
+func scale_player() -> void:
 	if Input.is_action_just_pressed("Scale_up"):
 		tmp_scale += 0.5
-	else:
-		tmp_scale = move_toward(tmp_scale, 0.15, 0.25 * delta)
+	elif Input.is_action_just_pressed("Scale_down"):
+		tmp_scale -= 0.5
 	tmp_scale = clampf(tmp_scale, 0.15, 16)
 	scale = Vector2(tmp_scale, tmp_scale)
 
