@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ibhlh"]
 size = Vector2(32, 256)
 
-[node name="LevelSegment" instance=ExtResource("1_35mn1")]
+[node name="ButtonSegment" instance=ExtResource("1_35mn1")]
 script = ExtResource("2_ppxqb")
 button_scene = ExtResource("3_dswx0")
 
