@@ -1,6 +1,7 @@
 class_name Player extends CharacterBody2D
 
 signal died
+signal bonus_detected
 
 @export var move_speed: float = 256.0
 @export var acceleration: float = 256.0
@@ -11,13 +12,17 @@ signal died
 var speed: float = 0.0
 var rot: float = 0.0
 var tmp_scale: float = 2.0
+var bonus_cd: bool = false
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var bounce_sfx: AudioStreamPlayer2D = $Bounce
+@onready var bonus_sfx: AudioStreamPlayer2D = $Bonus
+@onready var bonus_detector: Node2D = $BonusDetector
 
 func _physics_process(delta: float) -> void:
 	scale_player()
 	move_player(delta)
+	check_bonus()
 	screenwrap()
 
 func move_player(delta: float) -> void:
@@ -50,6 +55,22 @@ func screenwrap() -> void:
 	elif position.y < (0 - 8 * tmp_scale):
 		position.y = 256
 
+func check_bonus() -> void:
+	if bonus_cd:
+		return
+	var both_colliding = true
+	for ray in bonus_detector.get_children():
+		if not ray.is_colliding():
+			both_colliding = false
+			break
+	
+	if both_colliding:
+		bonus_detected.emit()
+		bonus_sfx.play()
+		
+		bonus_cd = true
+		await get_tree().create_timer(2).timeout
+		bonus_cd = false
 
 func _on_hurtbox_area_entered(_area: Area2D) -> void:
 	died.emit()

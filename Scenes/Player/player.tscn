@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://5n6urx74v1s6"]
+[gd_scene load_steps=8 format=3 uid="uid://5n6urx74v1s6"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_s0a70"]
 [ext_resource type="Texture2D" uid="uid://cf0haqwh42tyf" path="res://Assets/art/scaleman.png" id="1_w44t1"]
 [ext_resource type="AudioStream" uid="uid://ck0cpyp8mxc5a" path="res://Assets/sfx/Bounce.wav" id="3_k64ly"]
+[ext_resource type="AudioStream" uid="uid://dxe112awo3pqq" path="res://Assets/sfx/Bonus.wav" id="4_4e1yl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2nhnc"]
 radius = 3.0
@@ -42,7 +43,24 @@ collision_mask = 0
 shape = SubResource("RectangleShape2D_dqpqc")
 debug_color = Color(0.972726, 0, 0.439023, 0.42)
 
+[node name="BonusDetector" type="Node2D" parent="."]
+
+[node name="Raycast1" type="RayCast2D" parent="BonusDetector"]
+target_position = Vector2(0, -12)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Raycast2" type="RayCast2D" parent="BonusDetector"]
+target_position = Vector2(0, 12)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
 [node name="Bounce" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_k64ly")
+
+[node name="Bonus" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_4e1yl")
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
