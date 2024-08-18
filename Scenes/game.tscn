@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://cdl6gdcyomj70"]
+[gd_scene load_steps=6 format=3 uid="uid://cdl6gdcyomj70"]
 
+[ext_resource type="Script" path="res://Scenes/game.gd" id="1_b0kk7"]
 [ext_resource type="Texture2D" uid="uid://chb3gndcy71f8" path="res://Assets/art/grid.png" id="1_mbgbp"]
 [ext_resource type="PackedScene" uid="uid://5n6urx74v1s6" path="res://Scenes/Player/player.tscn" id="2_svo5w"]
+[ext_resource type="PackedScene" uid="uid://ccqm8s3n7iufw" path="res://Scenes/HUD/hud.tscn" id="2_t3eak"]
 [ext_resource type="PackedScene" uid="uid://bvxuo1xruaesu" path="res://Scenes/segment_spawner/segment_spawner.tscn" id="2_wsyxe"]
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_b0kk7")
 
 [node name="ParallaxBackground" type="Node2D" parent="."]
 
@@ -17,8 +20,15 @@ follow_viewport = false
 texture = ExtResource("1_mbgbp")
 centered = false
 
+[node name="Hud" parent="." instance=ExtResource("2_t3eak")]
+
 [node name="Segment_Spawner" parent="." instance=ExtResource("2_wsyxe")]
 position = Vector2(544, 0)
 
 [node name="Player" parent="." instance=ExtResource("2_svo5w")]
 position = Vector2(128, 128)
+
+[node name="ScoreTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]

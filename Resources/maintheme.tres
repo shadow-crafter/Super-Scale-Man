@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://snspl6w3n2t"]
+
+[ext_resource type="FontFile" uid="uid://d20rr835cklah" path="res://Assets/fibberish.ttf" id="1_5tuyl"]
+
+[resource]
+Label/fonts/font = ExtResource("1_5tuyl")

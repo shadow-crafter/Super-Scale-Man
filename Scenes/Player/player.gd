@@ -1,5 +1,7 @@
 class_name Player extends CharacterBody2D
 
+signal died
+
 @export var move_speed: float = 256.0
 @export var acceleration: float = 256.0
 @export var rotation_max: float = deg_to_rad(10)
@@ -50,4 +52,5 @@ func screenwrap() -> void:
 
 
 func _on_hurtbox_area_entered(_area: Area2D) -> void:
-	get_tree().call_deferred("reload_current_scene")
+	died.emit()
+	queue_free()
