@@ -2,8 +2,9 @@ extends CharacterBody2D
 
 @export var move_speed: float = 256.0
 @export var acceleration: float = 256.0
-@export var rotation_max: float = deg_to_rad(45)
-@export var rot_speed: float = deg_to_rad(15)
+@export var rotation_max: float = deg_to_rad(10)
+@export var rot_speed: float = deg_to_rad(20)
+@export var gravity: float = 80.0
 
 var speed: float = 0.0
 var rot: float = 0.0
@@ -19,10 +20,13 @@ func _physics_process(delta: float) -> void:
 func move_player(delta: float) -> void:
 	var move_direction: float = Input.get_axis("Move_up", "Move_down")
 	
-	speed = move_toward(speed, move_speed * move_direction, acceleration * delta)
+	speed = move_toward(speed, move_speed * move_direction + gravity, acceleration * delta)
 	velocity = Vector2(0, speed)
 	
-	rot = move_toward(rot, rotation_max * move_direction, rot_speed * delta)
+	var rot_dir: float = move_direction
+	if rot_dir == 0.0:
+		rot_dir = velocity.normalized().y
+	rot = move_toward(rot, rotation_max * rot_dir, rot_speed * delta)
 	sprite.rotation = rot
 	
 	move_and_slide()
