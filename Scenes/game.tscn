@@ -18,7 +18,7 @@ texture = ExtResource("1_mbgbp")
 centered = false
 
 [node name="Segment_Spawner" parent="." instance=ExtResource("2_wsyxe")]
-position = Vector2(512, 0)
+position = Vector2(544, 0)
 
 [node name="Player" parent="." instance=ExtResource("2_svo5w")]
 position = Vector2(128, 128)

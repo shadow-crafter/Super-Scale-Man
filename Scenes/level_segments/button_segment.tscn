@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://4plweihbfvvm"]
+
+[ext_resource type="PackedScene" uid="uid://tw2cfj62ivwi" path="res://Resources/level_segment/level_segment.tscn" id="1_35mn1"]
+[ext_resource type="Script" path="res://Scenes/level_segments/button_segment.gd" id="2_ppxqb"]
+[ext_resource type="Texture2D" uid="uid://bt7b164xwyrd2" path="res://Assets/full_segment.png" id="2_wsaf0"]
+[ext_resource type="PackedScene" uid="uid://cd54ux3r0giuf" path="res://Scenes/button/button.tscn" id="3_dswx0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ibhlh"]
+size = Vector2(32, 256)
+
+[node name="LevelSegment" instance=ExtResource("1_35mn1")]
+script = ExtResource("2_ppxqb")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_wsaf0")
+offset = Vector2(0, 128)
+
+[node name="Buttons" type="Node2D" parent="." index="1"]
+
+[node name="Button" parent="Buttons" index="0" instance=ExtResource("3_dswx0")]
+position = Vector2(-64, 128)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(0, 128)
+shape = SubResource("RectangleShape2D_ibhlh")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="3"]
+position = Vector2(-26.5, 0)
+scale = Vector2(1.82813, 1)
+rect = Rect2(-32, 0, 64, 256)
