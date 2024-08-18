@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var player: Player = $Player
 @onready var score_label: Label = $Hud/Control/MarginContainer/ScoreLabel
+@onready var bonus_label: RichTextLabel = $Hud/Control/MarginContainer/BonusText
 
 func _ready() -> void:
 	player.died.connect(_on_player_died)
@@ -15,6 +16,9 @@ func _on_player_died() -> void:
 func player_got_bonus() -> void:
 	Game_Data.score += 10
 	update_score_text()
+	bonus_label.visible = true
+	await get_tree().create_timer(1).timeout
+	bonus_label.visible = false
 
 func _on_score_timer_timeout() -> void:
 	Game_Data.score += 1
