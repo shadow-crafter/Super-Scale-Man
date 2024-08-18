@@ -10,21 +10,33 @@ size = Vector2(32, 256)
 
 [node name="LevelSegment" instance=ExtResource("1_35mn1")]
 script = ExtResource("2_ppxqb")
+button_scene = ExtResource("3_dswx0")
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_wsaf0")
 offset = Vector2(0, 128)
 
-[node name="Buttons" type="Node2D" parent="." index="1"]
+[node name="ButtonSpawns" type="Node2D" parent="." index="1"]
 
-[node name="Button" parent="Buttons" index="0" instance=ExtResource("3_dswx0")]
-position = Vector2(-64, 128)
+[node name="Spot1" type="Marker2D" parent="ButtonSpawns" index="0"]
+position = Vector2(-64, 51)
+
+[node name="Spot2" type="Marker2D" parent="ButtonSpawns" index="1"]
+position = Vector2(-64, 102)
+
+[node name="Spot3" type="Marker2D" parent="ButtonSpawns" index="2"]
+position = Vector2(-64, 153)
+
+[node name="Spot4" type="Marker2D" parent="ButtonSpawns" index="3"]
+position = Vector2(-64, 204)
+
+[node name="Buttons" type="Node2D" parent="." index="2"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2(0, 128)
 shape = SubResource("RectangleShape2D_ibhlh")
 
-[node name="VisibleOnScreenNotifier2D" parent="." index="3"]
+[node name="VisibleOnScreenNotifier2D" parent="." index="4"]
 position = Vector2(-26.5, 0)
 scale = Vector2(1.82813, 1)
 rect = Rect2(-32, 0, 64, 256)
