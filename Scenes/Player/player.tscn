@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://5n6urx74v1s6"]
+[gd_scene load_steps=6 format=3 uid="uid://5n6urx74v1s6"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_s0a70"]
 [ext_resource type="Texture2D" uid="uid://cf0haqwh42tyf" path="res://Assets/scaleman.png" id="1_w44t1"]
@@ -10,6 +10,9 @@ height = 14.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cx4ij"]
 radius = 3.5
 height = 16.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqpqc"]
+size = Vector2(20, 22)
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(2, 2)
@@ -30,5 +33,12 @@ collision_mask = 2
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_cx4ij")
 debug_color = Color(0.340839, 0.616562, 0.222854, 0.42)
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_dqpqc")
+debug_color = Color(0.972726, 0, 0.439023, 0.42)
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
