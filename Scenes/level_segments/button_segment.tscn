@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://4plweihbfvvm"]
+[gd_scene load_steps=7 format=3 uid="uid://4plweihbfvvm"]
 
 [ext_resource type="PackedScene" uid="uid://tw2cfj62ivwi" path="res://Resources/level_segment/level_segment.tscn" id="1_35mn1"]
 [ext_resource type="Script" path="res://Scenes/level_segments/button_segment.gd" id="2_ppxqb"]
-[ext_resource type="Texture2D" uid="uid://bt7b164xwyrd2" path="res://Assets/full_segment.png" id="2_wsaf0"]
+[ext_resource type="Texture2D" uid="uid://bt7b164xwyrd2" path="res://Assets/art/full_segment.png" id="2_wsaf0"]
 [ext_resource type="PackedScene" uid="uid://cd54ux3r0giuf" path="res://Scenes/button/button.tscn" id="3_dswx0"]
+[ext_resource type="AudioStream" uid="uid://cvjrruu3xmfnl" path="res://Assets/sfx/ButtonSucess.wav" id="5_pwd8q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ibhlh"]
 size = Vector2(32, 256)
@@ -40,3 +41,6 @@ shape = SubResource("RectangleShape2D_ibhlh")
 position = Vector2(-26.5, 0)
 scale = Vector2(1.82813, 1)
 rect = Rect2(-32, 0, 64, 256)
+
+[node name="ButtonSuccess" type="AudioStreamPlayer2D" parent="." index="5"]
+stream = ExtResource("5_pwd8q")

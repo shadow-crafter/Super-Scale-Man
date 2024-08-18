@@ -11,6 +11,7 @@ var rot: float = 0.0
 var tmp_scale: float = 2.0
 
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var bounce_sfx: AudioStreamPlayer2D = $Bounce
 
 func _physics_process(delta: float) -> void:
 	scale_player()
@@ -34,8 +35,10 @@ func move_player(delta: float) -> void:
 func scale_player() -> void:
 	if Input.is_action_just_pressed("Scale_up"):
 		tmp_scale += 0.5
+		bounce_sfx.play()
 	elif Input.is_action_just_pressed("Scale_down"):
 		tmp_scale -= 0.5
+		bounce_sfx.play()
 	tmp_scale = clampf(tmp_scale, 0.5, 8)
 	scale = Vector2(tmp_scale, tmp_scale)
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cf0haqwh42tyf"
-path="res://.godot/imported/scaleman.png-a53cf2021011404a0185ce2955467f97.ctex"
+uid="uid://bt7b164xwyrd2"
+path="res://.godot/imported/full_segment.png-35d0f41d64136b63fc70ea2f8607f0e8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/scaleman.png"
-dest_files=["res://.godot/imported/scaleman.png-a53cf2021011404a0185ce2955467f97.ctex"]
+source_file="res://Assets/art/full_segment.png"
+dest_files=["res://.godot/imported/full_segment.png-35d0f41d64136b63fc70ea2f8607f0e8.ctex"]
 
 [params]
 

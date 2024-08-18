@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqwu4vf5w33hr"
-path="res://.godot/imported/broken_segment.png-2b095b0068efa5f636d4db9de83816c3.ctex"
+uid="uid://cwp010uqoq86c"
+path="res://.godot/imported/cracked_segment.png-8b03018555dedea5bb0f86b79b188a4e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/broken_segment.png"
-dest_files=["res://.godot/imported/broken_segment.png-2b095b0068efa5f636d4db9de83816c3.ctex"]
+source_file="res://Assets/art/cracked_segment.png"
+dest_files=["res://.godot/imported/cracked_segment.png-8b03018555dedea5bb0f86b79b188a4e.ctex"]
 
 [params]
 

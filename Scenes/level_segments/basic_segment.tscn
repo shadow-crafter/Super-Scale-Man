@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://tw2cfj62ivwi" path="res://Resources/level_segment/level_segment.tscn" id="1_e0gdn"]
 [ext_resource type="Script" path="res://Scenes/level_segments/basic_segment.gd" id="2_qbglb"]
-[ext_resource type="Texture2D" uid="uid://bqwu4vf5w33hr" path="res://Assets/broken_segment.png" id="2_td1qs"]
+[ext_resource type="Texture2D" uid="uid://bqwu4vf5w33hr" path="res://Assets/art/broken_segment.png" id="2_td1qs"]
 
 [node name="BasicSegment" instance=ExtResource("1_e0gdn")]
 script = ExtResource("2_qbglb")

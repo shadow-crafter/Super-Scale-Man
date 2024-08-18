@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cd54ux3r0giuf"]
+[gd_scene load_steps=5 format=3 uid="uid://cd54ux3r0giuf"]
 
-[ext_resource type="Texture2D" uid="uid://daam3j54hl4qq" path="res://Assets/Button-Sheet.png" id="1_3ct5x"]
+[ext_resource type="Texture2D" uid="uid://daam3j54hl4qq" path="res://Assets/art/Button-Sheet.png" id="1_3ct5x"]
 [ext_resource type="Script" path="res://Scenes/button/button.gd" id="1_kifw2"]
+[ext_resource type="AudioStream" uid="uid://bf61d11v6we63" path="res://Assets/sfx/ButtonTouch.wav" id="3_hf11d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b3on0"]
 size = Vector2(42, 42)
@@ -18,6 +19,9 @@ hframes = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_b3on0")
 debug_color = Color(0.717683, 0.328697, 0.882009, 0.42)
+
+[node name="ButtonPress" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_hf11d")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dya2754fmiod8"]
+[gd_scene load_steps=7 format=3 uid="uid://dya2754fmiod8"]
 
 [ext_resource type="PackedScene" uid="uid://tw2cfj62ivwi" path="res://Resources/level_segment/level_segment.tscn" id="1_2alud"]
-[ext_resource type="Texture2D" uid="uid://cwp010uqoq86c" path="res://Assets/cracked_segment.png" id="2_rm33a"]
+[ext_resource type="Texture2D" uid="uid://cwp010uqoq86c" path="res://Assets/art/cracked_segment.png" id="2_rm33a"]
 [ext_resource type="Script" path="res://Scenes/level_segments/cracked_segment.gd" id="2_xtvva"]
+[ext_resource type="AudioStream" uid="uid://dcg8lngb8pik3" path="res://Assets/sfx/Explosion.wav" id="4_rrnga"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4w8ma"]
 size = Vector2(32, 256)
@@ -31,5 +32,8 @@ collision_layer = 0
 position = Vector2(0, 128)
 shape = SubResource("RectangleShape2D_rbr6s")
 debug_color = Color(0.540001, 0.468074, 0.83859, 0.42)
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="." index="4"]
+stream = ExtResource("4_rrnga")
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

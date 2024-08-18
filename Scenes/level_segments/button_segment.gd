@@ -6,6 +6,7 @@ extends LevelSegment
 @onready var hitbox: CollisionShape2D = $Area2D/CollisionShape2D
 @onready var button_spawns: Array = $ButtonSpawns.get_children()
 @onready var button_container: Node2D = $Buttons
+@onready var sfx_player: AudioStreamPlayer2D = $ButtonSuccess
 
 func _ready() -> void:
 	var to_spawn_positions: Array[Vector2] = []
@@ -21,12 +22,14 @@ func _ready() -> void:
 		button_container.add_child(new_button)
 
 func _physics_process(_delta: float) -> void:
-	var all_pressed: bool = true
-	for button in button_container.get_children():
-		if not button.pressed:
-			all_pressed = false
-			break
-	
-	if all_pressed:
-		sprite.visible = false
-		hitbox.disabled = true
+	if sprite.visible:
+		var all_pressed: bool = true
+		for button in button_container.get_children():
+			if not button.pressed:
+				all_pressed = false
+				break
+		
+		if all_pressed:
+			sprite.visible = false
+			hitbox.disabled = true
+			sfx_player.play()
