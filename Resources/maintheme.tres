@@ -3,4 +3,5 @@
 [ext_resource type="FontFile" uid="uid://d20rr835cklah" path="res://Assets/fibberish.ttf" id="1_5tuyl"]
 
 [resource]
+Button/fonts/font = ExtResource("1_5tuyl")
 Label/fonts/font = ExtResource("1_5tuyl")
