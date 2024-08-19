@@ -13,20 +13,27 @@ var speed: float = 0.0
 var rot: float = 0.0
 var tmp_scale: float = 2.0
 var bonus_cd: bool = false
+var dead: bool = false
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var bounce_sfx: AudioStreamPlayer2D = $Bounce
 @onready var bonus_sfx: AudioStreamPlayer2D = $Bonus
+@onready var hit_sfx: AudioStreamPlayer2D = $Hit
 @onready var bonus_detector: Node2D = $BonusDetector
 
 func _physics_process(delta: float) -> void:
-	scale_player()
 	move_player(delta)
-	check_bonus()
-	screenwrap()
+	if not dead:
+		scale_player()
+		check_bonus()
+		screenwrap()
+	else:
+		rotate(deg_to_rad(5))
 
 func move_player(delta: float) -> void:
 	var move_direction: float = Input.get_axis("Move_up", "Move_down")
+	if dead:
+		move_direction = 0.0
 	
 	speed = move_toward(speed, move_speed * move_direction + gravity, acceleration * delta)
 	velocity = Vector2(0, speed)
@@ -74,4 +81,5 @@ func check_bonus() -> void:
 
 func _on_hurtbox_area_entered(_area: Area2D) -> void:
 	died.emit()
-	queue_free()
+	dead = true
+	hit_sfx.play()

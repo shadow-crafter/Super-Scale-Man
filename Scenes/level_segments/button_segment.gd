@@ -33,3 +33,5 @@ func _physics_process(_delta: float) -> void:
 			sprite.visible = false
 			hitbox.disabled = true
 			sfx_player.play()
+			for button in button_container.get_children():
+				button.success = true

@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://5n6urx74v1s6"]
+[gd_scene load_steps=9 format=3 uid="uid://5n6urx74v1s6"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_s0a70"]
 [ext_resource type="Texture2D" uid="uid://cf0haqwh42tyf" path="res://Assets/art/scaleman.png" id="1_w44t1"]
 [ext_resource type="AudioStream" uid="uid://ck0cpyp8mxc5a" path="res://Assets/sfx/Bounce.wav" id="3_k64ly"]
 [ext_resource type="AudioStream" uid="uid://dxe112awo3pqq" path="res://Assets/sfx/Bonus.wav" id="4_4e1yl"]
+[ext_resource type="AudioStream" uid="uid://c0bflthctphkw" path="res://Assets/sfx/Hit.wav" id="5_regnw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2nhnc"]
 radius = 3.0
@@ -62,5 +63,8 @@ stream = ExtResource("3_k64ly")
 
 [node name="Bonus" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_4e1yl")
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_regnw")
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
