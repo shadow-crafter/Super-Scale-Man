@@ -10,6 +10,7 @@
 size = Vector2(32, 256)
 
 [node name="ButtonSegment" instance=ExtResource("1_35mn1")]
+position = Vector2(16, 0)
 script = ExtResource("2_ppxqb")
 button_scene = ExtResource("3_dswx0")
 

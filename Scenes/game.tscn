@@ -33,6 +33,7 @@ texture = ExtResource("3_ihmch")
 centered = false
 
 [node name="Grass" type="Parallax2D" parent="ParallaxBackground"]
+visible = false
 scroll_scale = Vector2(1.1, 1.1)
 repeat_size = Vector2(512, 0)
 autoscroll = Vector2(-32, 0)
@@ -45,7 +46,7 @@ centered = false
 [node name="Hud" parent="." instance=ExtResource("2_t3eak")]
 
 [node name="Segment_Spawner" parent="." instance=ExtResource("2_wsyxe")]
-position = Vector2(544, 0)
+position = Vector2(560, 0)
 
 [node name="Player" parent="." instance=ExtResource("2_svo5w")]
 position = Vector2(128, 128)

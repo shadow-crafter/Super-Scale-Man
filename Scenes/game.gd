@@ -18,5 +18,6 @@ func player_got_bonus() -> void:
 	hud.show_bonus_label()
 
 func _on_score_timer_timeout() -> void:
-	Game_Data.score += 1
-	hud.update_score_text()
+	if not player.dead:
+		Game_Data.score += 1
+		hud.update_score_text()

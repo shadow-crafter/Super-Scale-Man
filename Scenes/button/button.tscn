@@ -1,18 +1,100 @@
-[gd_scene load_steps=5 format=3 uid="uid://cd54ux3r0giuf"]
+[gd_scene load_steps=14 format=3 uid="uid://cd54ux3r0giuf"]
 
 [ext_resource type="Texture2D" uid="uid://daam3j54hl4qq" path="res://Assets/art/Button-Sheet.png" id="1_3ct5x"]
 [ext_resource type="Script" path="res://Scenes/button/button.gd" id="1_kifw2"]
 [ext_resource type="AudioStream" uid="uid://bf61d11v6we63" path="res://Assets/sfx/ButtonTouch.wav" id="3_hf11d"]
+[ext_resource type="Texture2D" uid="uid://cb4kaa5acc71n" path="res://Assets/art/balloon-Sheet.png" id="4_wdfvu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38lyy"]
+atlas = ExtResource("4_wdfvu")
+region = Rect2(0, 0, 8, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nncqx"]
+atlas = ExtResource("4_wdfvu")
+region = Rect2(8, 0, 8, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8gnwj"]
+atlas = ExtResource("4_wdfvu")
+region = Rect2(16, 0, 8, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qafnl"]
+atlas = ExtResource("4_wdfvu")
+region = Rect2(24, 0, 8, 22)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o1etq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_38lyy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nncqx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8gnwj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qafnl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b3on0"]
 size = Vector2(42, 42)
+
+[sub_resource type="Animation" id="Animation_6vjkw"]
+resource_name = "sway"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.0872665, -0.261799, -0.0872665]
+}
+
+[sub_resource type="Animation" id="Animation_0felw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cjs6w"]
+_data = {
+"RESET": SubResource("Animation_0felw"),
+"sway": SubResource("Animation_6vjkw")
+}
 
 [node name="Button" type="Area2D"]
 collision_layer = 4
 script = ExtResource("1_kifw2")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+rotation = 0.0872665
+sprite_frames = SubResource("SpriteFrames_o1etq")
+autoplay = "default"
+frame_progress = 0.329037
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(2, 2)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_3ct5x")
 hframes = 2
 
@@ -22,6 +104,12 @@ debug_color = Color(0.717683, 0.328697, 0.882009, 0.42)
 
 [node name="ButtonPress" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_hf11d")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cjs6w")
+}
+autoplay = "sway"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]
